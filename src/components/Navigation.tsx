@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -37,34 +39,36 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5"
+            ? "bg-[#050508]/80 backdrop-blur-xl border-b border-[var(--accent)]/10"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl font-bold tracking-tight hover:text-[var(--accent)] transition-colors"
+            className="text-xl font-bold tracking-tight hover:text-[var(--accent)] transition-colors duration-300"
           >
-            SHADER
+            <span className="text-[var(--accent)]">D</span>IVJIT
           </button>
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.href)}
-                className="nav-link text-sm uppercase tracking-[0.2em] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors pb-1"
+                className="nav-link text-sm uppercase tracking-[0.15em] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors pb-1"
               >
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollTo("#contact")}
-              className="text-sm uppercase tracking-[0.2em] px-6 py-2.5 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            <a
+              href="https://github.com/Divjit07"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm uppercase tracking-[0.15em] px-5 py-2 border border-[var(--accent)]/40 rounded-full hover:bg-[var(--accent)] hover:text-white transition-all duration-300 text-[var(--accent)]"
             >
-              Book a Call
-            </button>
+              GitHub
+            </a>
           </div>
 
           <button
@@ -95,7 +99,7 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-[#050508]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
           >
             {navItems.map((item, i) => (
               <motion.button

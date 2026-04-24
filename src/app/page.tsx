@@ -3,10 +3,11 @@
 import dynamic from "next/dynamic";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import ProjectCarousel from "@/components/ProjectCarousel";
 import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
 import Marquee from "@/components/Marquee";
-import CtaBanner from "@/components/CtaBanner";
+import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
@@ -28,10 +29,11 @@ export default function Home() {
 
       <main className="relative z-10">
         <Hero />
-        <ProjectCarousel />
-        <Marquee />
         <About />
-        <CtaBanner />
+        <Marquee />
+        <Skills />
+        <Projects />
+        <Education />
         <Contact />
         <Footer />
       </main>

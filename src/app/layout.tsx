@@ -13,18 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shader — Creative Development Studio",
+  title: "Divjit Singh — LLM Engineer & Full-Stack Developer",
   description:
-    "A creative development studio specialized in building interactive 3D and AI solutions for the web. Based in Sweden, working worldwide.",
+    "Portfolio of Divjit Singh — LLM Engineer, Software Developer, and Web Developer based in Toronto, ON. Building scalable solutions from AI systems to full-stack web applications.",
   keywords: [
-    "creative development",
-    "3D",
-    "WebGL",
+    "Divjit Singh",
+    "LLM Engineer",
+    "Full-Stack Developer",
+    "Web Developer",
+    "Software Engineer",
+    "React",
+    "Next.js",
     "Three.js",
     "AI",
-    "interactive",
-    "studio",
-    "Sweden",
+    "Toronto",
   ],
 };
 

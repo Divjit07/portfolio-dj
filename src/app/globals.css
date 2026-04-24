@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #050508;
   --foreground: #ededed;
-  --accent: #c8ff00;
+  --accent: #6C63FF;
+  --accent-light: #8B83FF;
+  --accent-glow: rgba(108, 99, 255, 0.15);
   --muted: #888888;
-  --card-bg: #141414;
-  --border: #222222;
+  --card-bg: #0d0d12;
+  --border: #1a1a24;
+  --gradient-1: #6C63FF;
+  --gradient-2: #00D4AA;
+  --gradient-3: #FF6B6B;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
   --color-card-bg: var(--card-bg);
   --color-border: var(--border);
@@ -39,11 +45,11 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #000;
+  color: #fff;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -51,12 +57,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--accent-light);
 }
 
 .grain-overlay {
@@ -67,7 +73,7 @@ body {
   height: 200%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   animation: grain 0.5s steps(1) infinite;
 }
@@ -86,10 +92,25 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--foreground) 0%, var(--muted) 100%);
+  background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 50%, var(--gradient-3) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border-image: linear-gradient(135deg, var(--accent), var(--gradient-2)) 1;
+}
+
+.glow-accent {
+  box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(108, 99, 255, 0.05);
 }
 
 .line-reveal {
@@ -123,7 +144,7 @@ body {
 
 .marquee-content {
   display: flex;
-  animation: marquee 30s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 @keyframes marquee {
@@ -137,17 +158,17 @@ body {
 }
 
 .project-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(108, 99, 255, 0.15);
 }
 
 .cursor-glow {
   position: fixed;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(200, 255, 0, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.06) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   z-index: 9998;
   transition: opacity 0.3s;
@@ -174,21 +195,33 @@ body {
   transform: translateX(0);
 }
 
-.split-text span {
-  display: inline-block;
-  overflow: hidden;
+.skill-pill {
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.split-text span span {
-  display: inline-block;
-  transform: translateY(100%);
-  animation: splitReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.skill-pill:hover {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: rgba(108, 99, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.15);
 }
 
-@keyframes splitReveal {
-  to {
-    transform: translateY(0);
-  }
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.3), transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 canvas {
